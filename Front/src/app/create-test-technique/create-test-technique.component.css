@@ -1,0 +1,24 @@
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+  }
+  
+  .custom-checkbox-input {
+    margin-right: 8px; /* Espace entre la case à cocher et le texte */
+    width: 20px; /* Largeur de la case à cocher */
+    height: 20px; /* Hauteur de la case à cocher */
+  }
+  
+  .custom-checkbox-input:checked {
+    background-color: #007bff; /* Couleur de fond lorsque la case est cochée */
+    border-color: #007bff; /* Couleur de bordure lorsque la case est cochée */
+  }
+  
+  .custom-checkbox-input:focus {
+    outline: none; /* Supprime l'effet de focus par défaut */
+    box-shadow: 0 0 2px 2px rgba(0, 123, 255, 0.25); /* Ajoute un contour de mise au point */
+  }
+  

@@ -1,0 +1,765 @@
+<!--begin::Body-->
+
+<!--begin::App-->
+<div class="d-flex flex-column flex-root app-root" id="kt_app_root">
+  <!--begin::Page-->
+  <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
+    <!--begin::Wrapper-->
+    <div class="app-wrapper d-flex" id="kt_app_wrapper">
+      <!--begin::Wrapper container-->
+      <div class="app-container container-fluid">
+        <!--begin::Main-->
+        <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+          <!--begin::Content wrapper-->
+          <div class="d-flex flex-column flex-column-fluid">
+            <!--begin::Toolbar-->
+            <div id="kt_app_toolbar" class="app-toolbar">
+              <!--begin::Toolbar container-->
+              <div class="d-flex flex-stack flex-row-fluid">
+                <!--begin::Toolbar wrapper-->
+                <div class="d-flex flex-column flex-row-fluid">
+                  <!--begin::Breadcrumb-->
+                  <ul
+                    class="breadcrumb breadcrumb-separatorless fw-semibold mb-3"
+                  >
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item text-gray-600 fw-bold lh-1">
+                      <a
+                        href="/metronic8/demo46/?page=index"
+                        class="text-white text-hover-primary"
+                      >
+                        <i class="ki-duotone ki-home text-gray-500 fs-2"></i>
+                      </a>
+                    </li>
+                    <!--end::Item-->
+
+                    <!-- begin::Item-->
+                    <!-- <li class="breadcrumb-item">
+                          <i
+                            class="ki-duotone ki-right fs-3 text-gray-500 mx-n1"
+                          ></i>
+                        </li> -->
+                    <!--end::Item -->
+
+                    <!--begin::Item-->
+
+                    <!--end::Item-->
+                  </ul>
+                  <!--end::Breadcrumb-->
+
+                  <!--begin::Page title-->
+                  <div class="page-title d-flex align-items-center me-3">
+                    <!--begin::Title-->
+                    <h1
+                      class="page-heading d-flex text-gray-900 fw-bolder fs-1 flex-column justify-content-center my-0"
+                    ></h1>
+                    <!--end::Title-->
+                  </div>
+                  <!--end::Page title-->
+                </div>
+                <!--end::Toolbar wrapper-->
+              </div>
+              <!--end::Toolbar container-->
+            </div>
+            <!--end::Toolbar-->
+
+            <!--begin::Content-->
+            <div id="kt_app_content" class="app-content">
+              <!--begin::Card-->
+              <div class="card card-flush">
+                <!--begin::Card body-->
+                <div class="card-body">
+                  <!--begin:::Tabs-->
+                  <!--begin::Card title-->
+                  <div
+                    class="card-title d-flex justify-content-between align-items-center m-0"
+                  >
+                    <h3 class="fw-bold m-0" *ngIf="!idcondidat">
+                      creer profil
+                    </h3>
+                    <h3 class="fw-bold m-0" *ngIf="idcondidat">
+                      modifier profil
+                    </h3>
+                    <i
+                      class="bi bi-file-earmark-pdf text-success"
+                      style="font-size: 2rem"
+                    >
+                    </i>
+                  </div>
+
+                  <!--end::Card title-->
+                  <!--end:::Tabs-->
+                  <br /><br /><br />
+                  <!--begin:::Tab content-->
+                  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <!--begin:::Tab pane-->
+
+                    <!--begin::Form-->
+
+                    <!--begin::Input group-->
+                    <div class="row fv-row mb-7">
+                      <div class="col-md-3 text-md-end">
+                        <!--begin::Label-->
+                        <label class="fs-6 fw-semibold form-label mt-3">
+                          <span class="required">Civilité</span>
+                        </label>
+                        <!--end::Label-->
+                      </div>
+
+                      <div class="col-md-9">
+                        <div class="w-100">
+                          <select
+                            (change)="changeCivilite($event)"
+                            class="form-control mb-7 form-control form-control-lg sg-select2"
+                            formControlName="civilite"
+                            [ngClass]="{
+                              'is-invalid':
+                                f['civilite'].errors && f['civilite'].touched
+                            }"
+                          >
+                            <option value="" disabled>Civilité</option>
+                            <option value="M">M</option>
+                            <option value="Mme">Mme</option>
+                            <option value="Mlle">Mlle</option>
+                          </select>
+                          <div
+                            *ngIf="
+                              form.get('civilite')?.errors &&
+                              form.get('civilite')?.touched
+                            "
+                            class="invalid-feedback fs-7 fw-bold"
+                          >
+                            {{
+                              customValidators.getErrorMessage(
+                                "civilite",
+                                form.get("civilite")!.errors
+                              )
+                            }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--end::Input group-->
+
+                    <!--begin::Input group-->
+                    <div class="row fv-row mb-7">
+                      <div class="col-md-3 text-md-end">
+                        <!--begin::Label-->
+                        <label class="fs-6 fw-semibold form-label mt-3">
+                          <span class="required">Nom</span>
+                        </label>
+                        <!--end::Label-->
+                      </div>
+
+                      <div class="col-md-9">
+                        <!--begin::Input-->
+                        <!--begin::Input group-->
+                        <div class="mb-7">
+                          <input
+                            type="text"
+                            class="form-control bg-transparent"
+                            autocomplete="off"
+                            formControlName="nom"
+                            [ngClass]="{
+                              'is-invalid':
+                                form.get('nom')?.touched &&
+                                form.get('nom')?.errors
+                            }"
+                          />
+
+                          <div
+                            *ngIf="
+                              form.get('nom')?.touched &&
+                              form.get('nom')?.errors
+                            "
+                            class="invalid-feedback fs-7 fw-bold"
+                          >
+                            {{
+                              customValidators.getErrorMessage(
+                                "nom",
+                                form.get("nom")!.errors
+                              )
+                            }}
+                          </div>
+                        </div>
+                        <!--end::Input group-->
+                        <!--end::Input-->
+                      </div>
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="row fv-row mb-7">
+                      <div class="col-md-3 text-md-end">
+                        <!--begin::Label-->
+                        <label class="fs-6 fw-semibold form-label mt-3">
+                          <span class="required">Prénom</span>
+                        </label>
+                        <!--end::Label-->
+                      </div>
+
+                      <div class="col-md-9">
+                        <!--begin::Input-->
+                        <!--begin::Input group-->
+                        <div class="mb-7">
+                          <input
+                            type="text"
+                            class="form-control bg-transparent"
+                            autocomplete="off"
+                            formControlName="prenom"
+                            [ngClass]="{
+                              'is-invalid':
+                                form.get('prenom')?.touched &&
+                                form.get('prenom')?.errors
+                            }"
+                          />
+
+                          <div
+                            *ngIf="
+                              form.get('prenom')?.touched &&
+                              form.get('prenom')?.errors
+                            "
+                            class="invalid-feedback fs-7 fw-bold"
+                          >
+                            {{
+                              customValidators.getErrorMessage(
+                                "prenom",
+                                form.get("prenom")!.errors
+                              )
+                            }}
+                          </div>
+                        </div>
+                        <!--end::Input group-->
+                        <!--end::Input-->
+                      </div>
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="row fv-row mb-7">
+                      <div class="col-md-3 text-md-end">
+                        <!--begin::Label-->
+                        <label class="fs-6 fw-semibold form-label mt-3">
+                          <span class="required">tel</span>
+                        </label>
+                        <!--end::Label-->
+                      </div>
+
+                      <div class="col-md-9">
+                        <div class="w-100">
+                          <p-inputMask
+                            mask="+216********"
+                            formControlName="tel"
+                            placeholder="+216********"
+                            [ngClass]="{
+                              'is-invalid':
+                                form.get('tel')?.touched &&
+                                form.get('tel')?.errors
+                            }"
+                          ></p-inputMask>
+                          <div
+                            *ngIf="
+                              form.get('tel')?.touched &&
+                              form.get('tel')?.errors
+                            "
+                            class="invalid-feedback fs-7 fw-bold"
+                          >
+                            {{
+                              customValidators.getErrorMessage(
+                                "tel",
+                                form.get("tel")!.errors
+                              )
+                            }}
+                          </div>
+                          <div class="form-text text-muted">
+                            Veuillez saisir votre numéro de téléphone tunisien
+                            sous la forme +216********
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!--end::Input group-->
+
+                    <!--begin::Input group-->
+                    <div class="row fv-row mb-7">
+                      <div class="col-md-3 text-md-end">
+                        <!--begin::Label-->
+                        <label class="fs-6 fw-semibold form-label mt-3">
+                          <span class="required">Region</span>
+                        </label>
+                        <!--end::Label-->
+                      </div>
+
+                      <div class="col-md-9">
+                        <div class="w-100">
+                          <!--begin::Input group-->
+                          <div class="mb-7">
+                            <input
+                              type="text"
+                              class="form-control bg-transparent"
+                              autocomplete="off"
+                              formControlName="region"
+                              [ngClass]="{
+                                'is-invalid':
+                                  form.get('region')?.touched &&
+                                  form.get('region')?.errors
+                              }"
+                            />
+
+                            <div
+                              *ngIf="
+                                form.get('region')?.touched &&
+                                form.get('region')?.errors
+                              "
+                              class="invalid-feedback fs-7 fw-bold"
+                            >
+                              {{
+                                customValidators.getErrorMessage(
+                                  "region",
+                                  form.get("region")!.errors
+                                )
+                              }}
+                            </div>
+                          </div>
+                          <!--end::Input group-->
+                        </div>
+                      </div>
+                    </div>
+                    <!--end::Input group-->
+
+                    <!--end::Form-->
+
+                    <!--end:::Tab pane-->
+
+                    <!--begin:::Tab pane-->
+
+                    <!--begin::Form-->
+
+                    <!--begin::Input group-->
+                    <div class="row fv-row mb-7">
+                      <div class="col-md-3 text-md-end">
+                        <!--begin::Label-->
+                        <label class="fs-6 fw-semibold form-label mt-3">
+                          <span class="required">domaine d'activité </span>
+                        </label>
+                        <!--end::Label-->
+                      </div>
+
+                      <div class="col-md-9">
+                        <div class="w-100">
+                          <!--begin::Select2-->
+                          <select
+                            class="form-control mb-7 form-control form-control-lg sg-select2"
+                            formControlName="domaine"
+                            [ngClass]="{
+                              'is-invalid':
+                                form.get('domaine')?.touched &&
+                                form.get('domaine')?.errors
+                            }"
+                          >
+                            <option value="" disabled>
+                              Domaine d'activité
+                            </option>
+                            <option value="Development logiciel" id="1">
+                              Development logiciel
+                            </option>
+                            <option value="Administration web" id="2">
+                              Administration web
+                            </option>
+                            <option value="Reseau informatique" id="3">
+                              Reseau informatique
+                            </option>
+                            <option value="Maintenance informatique" id="4">
+                              Maintenance informatique
+                            </option>
+                            <option value="Securite informatique" id="5">
+                              Securite informatique
+                            </option>
+                            <option value="Big data" id="6">Big data</option>
+                            <option value="Cloud computing" id="7">
+                              Cloud computing
+                            </option>
+                          </select>
+                          <div
+                            *ngIf="
+                              form.get('domaine')?.touched &&
+                              form.get('domaine')?.errors
+                            "
+                            class="invalid-feedback fs-7 fw-bold"
+                          >
+                            {{
+                              customValidators.getErrorMessage(
+                                "domaine",
+                                form.get("domaine")!.errors
+                              )
+                            }}
+                          </div>
+                          <!--end::Select2-->
+                        </div>
+                      </div>
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="row fv-row mb-7">
+                      <div class="col-md-3 text-md-end">
+                        <!--begin::Label-->
+                        <label class="fs-6 fw-semibold form-label mt-3">
+                          <span class="required">diplome </span>
+                        </label>
+                        <!--end::Label-->
+                      </div>
+
+                      <div class="col-md-9">
+                        <div class="w-100">
+                          <!--begin::Select2-->
+                          <p-multiSelect
+                            [options]="diplomes"
+                            formControlName="selectedDiplomes"
+                            optionLabel="name"
+                            placeholder="choisir diplome"
+                            [ngClass]="{
+                              'is-invalid':
+                                form.get('diplome')?.touched &&
+                                form.get('diplome')?.errors
+                            }"
+                          ></p-multiSelect>
+                          <div
+                            *ngIf="
+                              form.get('diplome')?.touched &&
+                              form.get('diplome')?.errors
+                            "
+                            class="invalid-feedback fs-7 fw-bold"
+                          >
+                            {{
+                              customValidators.getErrorMessage(
+                                "diplome",
+                                form.get("diplome")!.errors
+                              )
+                            }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <br />
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="row fv-row mb-7">
+                      <div class="col-md-3 text-md-end">
+                        <!--begin::Label-->
+                        <label class="fs-6 fw-semibold form-label mt-3">
+                          <span class="required"
+                            >Expériences professionnelles</span
+                          >
+                        </label>
+                        <!--end::Label-->
+                      </div>
+
+                      <div class="col-md-9">
+                        <div class="w-100">
+                          <!--begin::Select2-->
+                          <select
+                            (change)="changeExpProf($event)"
+                            class="form-control mb-7 form-control form-control-lg sg-select2"
+                            formControlName="expProf"
+                            [ngClass]="{
+                              'is-invalid':
+                                form.get('expProf')?.touched &&
+                                form.get('expProf')?.errors
+                            }"
+                          >
+                            <option value="" disabled selected>
+                              Expériences professionnelles
+                            </option>
+                            <option value="Debutant">Débutant</option>
+                            <option value="1 à 2 ans">1 à 2 ans</option>
+                            <option value="3 à 5 ans">3 à 5 ans</option>
+                            <option value="6 à 9 ans">6 à 9 ans</option>
+                            <option value="10 ans ou plus">
+                              10 ans ou plus
+                            </option>
+                          </select>
+                          <div
+                            *ngIf="
+                              form.get('expProf')?.touched &&
+                              form.get('expProf')?.errors
+                            "
+                            class="invalid-feedback fs-7 fw-bold"
+                          >
+                            {{
+                              customValidators.getErrorMessage(
+                                "expProf",
+                                form.get("expProf")!.errors
+                              )
+                            }}
+                          </div>
+                          <!--end::Select2-->
+                        </div>
+                      </div>
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="row fv-row mb-7">
+                      <div class="col-md-3 text-md-end">
+                        <!--begin::Label-->
+                        <label class="fs-6 fw-semibold form-label mt-3">
+                          <span class="required">Competences </span>
+                        </label>
+                        <!--end::Label-->
+                      </div>
+
+                      <div class="col-md-9">
+                        <div class="w-100">
+                          <!--begin::Select2-->
+                          <p-multiSelect
+                            [options]="groupedCompetences"
+                            [group]="true"
+                            formControlName="selectedCompetences"
+                            placeholder="choisir Competences"
+                            scrollHeight="250px"
+                            display="chip"
+                            [ngClass]="{
+                              'is-invalid':
+                                form.get('competences')?.touched &&
+                                form.get('competences')?.errors
+                            }"
+                          >
+                            <ng-template let-group pTemplate="group">
+                              <div class="flex align-items-center">
+                                <div
+                                  [class]="'mr-2 flag flag-' + group.value"
+                                  style="width: 20px"
+                                ></div>
+                                <span>{{ group.label }}</span>
+                              </div>
+                            </ng-template>
+                          </p-multiSelect>
+                          <div
+                            *ngIf="
+                              form.get('competences')?.touched &&
+                              form.get('competences')?.errors
+                            "
+                            class="invalid-feedback fs-7 fw-bold"
+                          >
+                            {{
+                              customValidators.getErrorMessage(
+                                "competence",
+                                form.get("competences")!.errors
+                              )
+                            }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--end::Input group-->
+                    <br />
+
+                    <br /><br />
+                    <!--begin::Input group-->
+                    <div class="row fv-row mb-7">
+                      <div class="col-md-3 text-md-end">
+                        <!--begin::Label-->
+                        <label class="fs-6 fw-semibold form-label mt-3">
+                          <span>Photo</span>
+                        </label>
+                        <!--end::Label-->
+                      </div>
+
+                      <div class="col-md-9">
+                        <div class="w-100">
+                          <!--begin::Input group-->
+                          <div class="row mb-6">
+                            <!--begin::Col-->
+                            <div class="col-lg-8">
+                              <!--begin::Image input-->
+                              <div
+                                class="image-input image-input-outline"
+                                data-kt-image-input="true"
+                                style="
+                                  background-image: url('/assets/img/photo-avatar-profil.png');
+                                "
+                              >
+                                <!--begin::Preview existing avatar-->
+                                <div
+                                  class="image-input-wrapper w-125px h-125px"
+                                  style="
+                                    background-image: url(/assets/img/photo-avatar-profil.png);
+                                  "
+                                ></div>
+                                <!--end::Preview existing avatar-->
+
+                                <!--begin::Label-->
+                                <label
+                                  class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                  data-kt-image-input-action="change"
+                                  data-bs-toggle="tooltip"
+                                  title="Change avatar"
+                                >
+                                  <i class="ki-duotone ki-pencil fs-7"
+                                    ><span class="path1"></span
+                                    ><span class="path2"></span
+                                  ></i>
+                                  <!--begin::Inputs-->
+                                  <input
+                                    type="file"
+                                    name="avatar"
+                                    accept=".png, .jpg, .jpeg"
+                                  />
+                                  <input type="hidden" name="avatar_remove" />
+                                  <!--end::Inputs-->
+                                </label>
+                                <!--end::Label-->
+
+                                <!--begin::Cancel-->
+                                <span
+                                  class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                  data-kt-image-input-action="cancel"
+                                  data-bs-toggle="tooltip"
+                                  title="Cancel avatar"
+                                >
+                                  <i class="ki-duotone ki-cross fs-2"
+                                    ><span class="path1"></span
+                                    ><span class="path2"></span
+                                  ></i>
+                                </span>
+                                <!--end::Cancel-->
+
+                                <!--begin::Remove-->
+                                <span
+                                  class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                  data-kt-image-input-action="remove"
+                                  data-bs-toggle="tooltip"
+                                  title="Remove avatar"
+                                >
+                                  <i class="ki-duotone ki-cross fs-2"
+                                    ><span class="path1"></span
+                                    ><span class="path2"></span
+                                  ></i>
+                                </span>
+                                <!--end::Remove-->
+                              </div>
+                              <!--end::Image input-->
+
+                              <!--begin::Hint-->
+                              <div class="form-text">
+                                Allowed file types: png, jpg, jpeg.
+                              </div>
+                              <!--end::Hint-->
+                            </div>
+                            <!--end::Col-->
+                          </div>
+                          <!--end::Input group-->
+                        </div>
+                      </div>
+                    </div>
+                    <!--end::Input group-->
+
+                    <!--begin::Input group-->
+                    <div class="row fv-row mb-7">
+                      <div class="col-md-3 text-md-end">
+                        <!--begin::Label-->
+                        <label
+                          class="fs-6 fw-semibold form-label mt-3 required"
+                        >
+                          <span>CV</span>
+                        </label>
+                        <!--end::Label-->
+                      </div>
+
+                      <div class="col-md-9">
+                        <div class="w-100">
+                          <!--begin::Input group-->
+                          <div class="fv-row">
+                            <!--begin::Dropzone-->
+                            <!--begin::Dropzone-->
+                            <div
+                              class="dropzone dropzone-queue mb-2"
+                              id="kt_modal_upload_dropzone"
+                            >
+                              <!--begin::Controls-->
+                              <div>
+                                <label>
+                                  <input
+                                    type="file"
+                                    (change)="selectFile($event)"
+                                  />
+                                </label>
+                              </div>
+
+                              <br />
+
+                              <div
+                                *ngIf="message && selectedFile"
+                                class="alert alert-secondary"
+                                role="alert"
+                                class="dropzone-item p-5"
+                              >
+                                {{ message }}
+                              </div>
+                              <!--begin::Hint-->
+                              <span
+                                class="form-text fs-6 text-muted"
+                                *ngIf="!message"
+                                >La taille maximale d'un fichier est de
+                                500KB.</span
+                              >
+                              <!--end::Hint-->
+                              <!--end::Controls-->
+                            </div>
+                            <!--end::Dropzone-->
+                            <!--end::Dropzone-->
+                          </div>
+                          <!--end::Input group-->
+                        </div>
+                      </div>
+                    </div>
+                    <!--end::Input group-->
+
+                    <!--begin::Action buttons-->
+                    <div class="row py-5">
+                      <div class="col-md-9 offset-md-3">
+                        <div class="d-flex">
+                          <!--begin::Button-->
+                          <button type="reset" class="btn btn-light me-3">
+                            annuler
+                          </button>
+                          <!--end::Button-->
+
+                          <!--begin::Button-->
+                          <button type="submit" class="btn btn-primary">
+                            <span class="indicator-label"> envoyer </span>
+                          </button>
+                          <!--end::Button-->
+                        </div>
+                      </div>
+                    </div>
+                    <!--end::Action buttons-->
+
+                    <!--end::Form-->
+
+                    <!--end:::Tab pane-->
+                  </form>
+                  <!--end:::Tab content-->
+                </div>
+                <!--end::Card body-->
+              </div>
+              <!--end::Card-->
+            </div>
+            <!--end::Content-->
+          </div>
+          <!--end::Content wrapper-->
+        </div>
+        <!--end:::Main-->
+      </div>
+      <!--end::Wrapper container-->
+    </div>
+    <!--end::Wrapper-->
+  </div>
+  <!--end::Page-->
+</div>
+<!--end::App-->
+
+<!--begin::Scrolltop-->
+<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+  <i class="ki-duotone ki-arrow-up"
+    ><span class="path1"></span><span class="path2"></span
+  ></i>
+</div>

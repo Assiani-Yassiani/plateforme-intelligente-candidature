@@ -1,0 +1,256 @@
+<!--begin::Vendor Stylesheets(used for this page only)-->
+<!-- <link
+  href="/src/app/file-upload/file-upload.component.css"
+  rel="stylesheet"
+  type="text/css"
+/> -->
+<!--end::Vendor Stylesheets-->
+
+<!--begin::Theme mode setup on page load-->
+<script>
+  var defaultThemeMode = "light";
+  var themeMode;
+
+  if (document.documentElement) {
+    if (document.documentElement.hasAttribute("data-bs-theme-mode")) {
+      themeMode = document.documentElement.getAttribute("data-bs-theme-mode");
+    } else {
+      if (localStorage.getItem("data-bs-theme") !== null) {
+        themeMode = localStorage.getItem("data-bs-theme");
+      } else {
+        themeMode = defaultThemeMode;
+      }
+    }
+
+    if (themeMode === "system") {
+      themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    }
+
+    document.documentElement.setAttribute("data-bs-theme", themeMode);
+  }
+</script>
+<!--end::Theme mode setup on page load-->
+
+<!--begin::Wrapper-->
+<div class="app-wrapper d-flex" id="kt_app_wrapper">
+  <!--begin::Wrapper container-->
+  <div class="app-container container-fluid">
+    <!--begin::Main-->
+    <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+      <!--begin::Content wrapper-->
+      <div class="d-flex flex-column flex-column-fluid">
+        <!--begin::Toolbar-->
+        <div id="kt_app_toolbar" class="app-toolbar">
+          <!--begin::Toolbar container-->
+          <div class="d-flex flex-stack flex-row-fluid">
+            <!--begin::Toolbar wrapper-->
+            <div class="d-flex flex-column flex-row-fluid">
+              <!--begin::Breadcrumb-->
+              <ul class="breadcrumb breadcrumb-separatorless fw-semibold mb-3">
+                <!--begin::Item-->
+                <li class="breadcrumb-item text-gray-600 fw-bold lh-1">
+                  <a
+                    [routerLink]="['/home']"
+                    class="text-white text-hover-primary"
+                  >
+                    <i class="ki-duotone ki-home text-gray-500 fs-2"></i>
+                  </a>
+                </li>
+                <!--end::Item-->
+
+                <!--begin::Item-->
+                <li class="breadcrumb-item">
+                  <i class="ki-duotone ki-right fs-3 text-gray-500 mx-n1"></i>
+                </li>
+                <!--end::Item-->
+              </ul>
+              <!--end::Breadcrumb-->
+
+              <!--begin::Page title-->
+              <div class="page-title d-flex align-items-center me-3">
+                <!--begin::Title-->
+                <h1
+                  class="page-heading d-flex text-gray-900 fw-bolder fs-1 flex-column justify-content-center my-0"
+                >
+                  Commencez dès maintenant
+                </h1>
+                <!--end::Title-->
+              </div>
+              <!--end::Page title-->
+            </div>
+            <!--end::Toolbar wrapper-->
+          </div>
+          <!--end::Toolbar container-->
+        </div>
+        <!--end::Toolbar-->
+
+        <!--begin::Content-->
+        <div id="kt_app_content" class="app-content">
+          <!--begin::Card-->
+          <div class="card">
+            <!--begin::Card body-->
+            <div class="card-body p-0">
+              <!--begin::Wrapper-->
+              <div class="card-px text-center py-20 my-10">
+                <!--begin::Title-->
+                <h2 class="fs-2x fw-bold mb-10">Bienvenue</h2>
+                <!--end::Title-->
+
+                <!--begin::Description-->
+                <p class="text-gray-500 fs-4 fw-semibold mb-10">
+                  Vous devez soumettre votre CV ici <br />
+                  afin de pouvoir préparer votre profil.
+                </p>
+                <!--end::Description-->
+
+                <!--begin::Action-->
+                <!--begin::Add customer-->
+                <button
+                  type="button"
+                  class="btn btn-flex btn-primary"
+                  data-bs-toggle="modal"
+                  routerLink="/editProfil"
+                >
+                  <i class="ki-duotone ki-folder-up fs-2"
+                    ><span class="path1"></span><span class="path2"></span
+                  ></i>
+                  creer profil
+                </button>
+                <!--end::Add customer-->
+              </div>
+              <!--end::Wrapper-->
+
+              <!--begin::Illustration-->
+              <div class="text-center px-4">
+                <img
+                  class="mw-100 mh-300px"
+                  alt=""
+                  src="/assets/img/sketchy.png"
+                />
+              </div>
+              <!--end::Illustration-->
+            </div>
+            <!--end::Card body-->
+          </div>
+          <!--end::Card-->
+        </div>
+        <!--end::Content-->
+      </div>
+      <!--end::Content wrapper-->
+    </div>
+    <!--end:::Main-->
+  </div>
+  <!--end::Wrapper container-->
+</div>
+<!--end::Wrapper-->
+
+<!--begin::Scrolltop-->
+<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+  <i class="ki-duotone ki-arrow-up"
+    ><span class="path1"></span><span class="path2"></span
+  ></i>
+</div>
+<!--end::Scrolltop-->
+
+<!--begin::Modals-->
+
+<!--begin::Modal - Upload File-->
+<div class="modal fade" id="kt_modal_upload" tabindex="-1" aria-hidden="true">
+  <!--begin::Modal dialog-->
+  <div class="modal-dialog modal-dialog-centered mw-650px">
+    <!--begin::Modal content-->
+    <div class="modal-content">
+      <!--begin::Form-->
+      <div class="form" action="none" id="kt_modal_upload_form">
+        <!--begin::Modal header-->
+        <div class="modal-header">
+          <!--begin::Modal title-->
+          <h2 class="fw-bold">inserer votre cv</h2>
+          <!--end::Modal title-->
+
+          <!--begin::Close-->
+          <div
+            class="btn btn-icon btn-sm btn-active-icon-primary"
+            data-bs-dismiss="modal"
+          >
+            <i class="ki-duotone ki-cross fs-1"
+              ><span class="path1"></span><span class="path2"></span
+            ></i>
+          </div>
+          <!--end::Close-->
+        </div>
+        <!--end::Modal header-->
+
+        <!--begin::Modal body-->
+        <div class="modal-body pt-10 pb-15 px-lg-17">
+          <!--begin::Input group-->
+          <div class="form-group">
+            <!--begin::Dropzone-->
+            <div
+              class="dropzone dropzone-queue mb-2"
+              id="kt_modal_upload_dropzone"
+            >
+              <!--begin::Controls-->
+              <div>
+                <label>
+                  <input type="file" (change)="selectFile($event)" />
+                </label>
+                <button
+                  class="dropzone-upload btn btn-sm btn-light-primary me-2"
+                  [disabled]="!selectedFiles"
+                  (click)="upload()"
+                  style="margin-left: 210px"
+                >
+                  Upload
+                </button>
+              </div>
+
+              <div class="progress bg-gray-300" *ngIf="currentFile">
+                <div
+                  class="progress-bar bg-primary"
+                  role="progressbar"
+                  attr.aria-valuenow="{{ progress }}"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  [ngStyle]="{ width: progress + '%' }"
+                >
+                  {{ progress }}%
+                </div>
+              </div>
+              <br />
+
+              <div
+                *ngIf="message && selectedFiles"
+                class="alert alert-secondary"
+                role="alert"
+                class="dropzone-item p-5"
+              >
+                {{ message }}
+              </div>
+              <!--begin::Hint-->
+              <span class="form-text fs-6 text-muted" *ngIf="!message"
+                >La taille maximale d'un fichier est de 500KB par fichier.</span
+              >
+              <!--end::Hint-->
+              <!--end::Controls-->
+            </div>
+            <!--end::Dropzone-->
+          </div>
+          <!--end::Input group-->
+        </div>
+        <!--end::Modal body-->
+      </div>
+      <!--end::Form-->
+    </div>
+  </div>
+</div>
+<!--end::Modal - Upload File-->
+
+<!--begin::Javascript-->
+
+<!--end::Custom Javascript-->
+<!--end::Javascript-->
+
+<!--end::Body-->

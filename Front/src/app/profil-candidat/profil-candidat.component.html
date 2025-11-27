@@ -1,0 +1,447 @@
+<app-navbar></app-navbar>
+<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
+  <!--begin::Main-->
+  <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+    <!--begin::Content wrapper-->
+    <div class="d-flex flex-column flex-column-fluid">
+      <!--begin::Toolbar-->
+      <div id="kt_app_toolbar" class="app-toolbar pt-6 pb-2">
+        <!--begin::Toolbar container-->
+        <div id="kt_app_toolbar_container" class="app-container container-fluid d-flex align-items-stretch">
+          <!--begin::Toolbar wrapper-->
+          <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100">
+            <!--begin::Page title-->
+            <div class="page-title d-flex flex-column justify-content-center gap-1 me-3">
+              <!--begin::Title-->
+              <h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-3 m-0">
+                Mon Profil
+              </h1>
+              <!--end::Title-->
+
+              <!--begin::Breadcrumb-->
+              <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0">
+                <!--begin::Item-->
+                <li class="breadcrumb-item text-muted">
+                  <a href="/projet/home/home.html" class="text-muted text-hover-primary">
+                    Page d'accueil
+                  </a>
+                </li>
+                <!--end::Item-->
+              </ul>
+              <!--end::Breadcrumb-->
+            </div>
+
+            <!--end::Page title-->
+            <div class="d-flex align-items-center gap-2 gap-lg-3">
+              <a data-bs-toggle="modal" class="btn btn-flex btn-primary h-40px fs-7 fw-bold"
+                data-bs-target="#kt_modal_create_campaign">
+                Entretiens
+              </a>
+            </div>
+          </div>
+          <!--end::Toolbar wrapper-->
+        </div>
+        <!--end::Toolbar container-->
+      </div>
+      <!--end::Toolbar-->
+
+      <!--begin::Content-->
+      <div id="kt_app_content" class="app-content flex-column-fluid">
+        <!--begin::Content container-->
+        <div id="kt_app_content_container" class="app-container container-fluid">
+          <!--begin::Navbar-->
+          <div class="card mb-5 mb-xl-10">
+            <div class="card-body pt-9 pb-0">
+              <!--begin::Details-->
+              <div class="d-flex flex-wrap flex-sm-nowrap">
+                <!--begin: Pic-->
+                <div class="me-7 mb-4">
+                  <div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
+                    <img src="/assets/img/photo-avatar-profil.png" alt="image" />
+                    <div
+                      class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-body h-20px w-20px">
+                    </div>
+                  </div>
+                </div>
+                <!--end::Pic-->
+
+                <!--begin::Info-->
+                <div class="flex-grow-1">
+                  <!--begin::Title-->
+                  <div class="d-flex justify-content-between align-items-start flex-wrap mb-2">
+                    <!--begin::User-->
+                    <div class="d-flex flex-column">
+                      <!--begin::Name-->
+                      <div class="d-flex align-items-center mb-2">
+                        <a href="#" class="text-gray-900 text-hover-primary fs-2 fw-bold me-1">{{ condidat.nom }} {{
+                          condidat.prenom }}</a>
+                        <a href="#"><i class="ki-outline ki-verify fs-1 text-primary"></i></a>
+                      </div>
+                      <!--end::Name-->
+
+                      <!--begin::Info-->
+                      <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
+                        <a href="#" class="d-flex align-items-center text-gray-500 text-hover-primary me-5 mb-2">
+                          <i class="ki-outline ki-geolocation fs-4 me-1"></i>
+                          {{ condidat.region }}
+                        </a>
+                      </div>
+                      <!--end::Info-->
+                    </div>
+                    <!--end::User-->
+                  </div>
+                  <!--end::Title-->
+
+                  <!--begin::Stats-->
+                  <div class="d-flex flex-wrap flex-stack">
+                    <!--begin::Wrapper-->
+                    <div class="d-flex flex-column flex-grow-1 pe-8">
+                      <!--begin::Stats-->
+                      <div class="d-flex flex-wrap">
+                        <!--begin::Stat-->
+
+                        <!--end::Stat-->
+
+                        <!--begin::Stat-->
+                        <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+                          <!--begin::Number-->
+                          <div class="d-flex align-items-center">
+                            <i class="ki-duotone ki-badge fs-3 text-success me-2">
+                              <span class="path1"></span>
+                              <span class="path2"></span>
+                              <span class="path3"></span>
+                              <span class="path4"></span>
+                              <span class="path5"></span>
+                            </i>
+                            <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="3">
+                              0
+                            </div>
+                          </div>
+                          <!--end::Number-->
+
+                          <!--begin::Label-->
+                          <div class="fw-semibold fs-6 text-gray-500">
+                            candidatures
+                          </div>
+                          <!--end::Label-->
+                        </div>
+                        <!--end::Stat-->
+                      </div>
+                      <!--end::Stats-->
+                    </div>
+                    <!--end::Wrapper-->
+
+                    <!--begin::Progress-->
+                    <div class="d-flex align-items-center w-200px w-sm-300px flex-column mt-3">
+                      <div class="d-flex justify-content-between w-100 mt-auto mb-2">
+                        <span class="fw-semibold fs-6 text-gray-500">suivi du processus de recrutement
+                        </span>
+                        <span class="fw-bold fs-6">50%</span>
+                      </div>
+
+                      <div class="h-5px mx-3 w-100 bg-light mb-3">
+                        <div class="bg-success rounded h-5px" role="progressbar" style="width: 50%" aria-valuenow="50"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <!--end::Progress-->
+                  </div>
+                  <!--end::Stats-->
+                </div>
+                <!--end::Info-->
+              </div>
+              <!--end::Details-->
+
+              <!--begin::Navs-->
+              <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
+                <!--begin::Nav item-->
+                <li class="nav-item mt-2">
+                  <a class="nav-link text-active-primary ms-0 me-10 py-5 active" [routerLink]="['/profilCandidat']">
+                    mon profil
+                  </a>
+                </li>
+                <!--end::Nav item-->
+                <!--begin::Nav item-->
+                <li class="nav-item mt-2">
+                  <a href="http://localhost:4200/editProfil" class="nav-link text-active-primary ms-0 me-10 py-5">
+                    Paramètres du profil
+                  </a>
+                </li>
+                <!--end::Nav item-->
+              </ul>
+              <!--begin::Navs-->
+            </div>
+          </div>
+          <!--end::Navbar-->
+          <!--begin::details View-->
+          <div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
+            <!--begin::Card header-->
+            <div class="card-header cursor-pointer">
+              <!--begin::Card title-->
+              <div class="card-title m-0">
+                <h3 class="fw-bold m-0">Détails du profil</h3>
+              </div>
+              <!--end::Card title-->
+
+              <!--begin::Action-->
+              <a href="http://localhost:4200/editProfil" class="btn btn-sm btn-primary align-self-center">
+                gérer profil</a>
+              <!--end::Action-->
+            </div>
+            <!--begin::Card header-->
+
+            <!--begin::Card body-->
+            <div class="card-body p-9">
+              <!--begin::Input group-->
+              <div class="row mb-7">
+                <!--begin::Label-->
+                <label class="col-lg-4 fw-semibold text-muted">
+                  domaine d'activité
+
+                  <span class="ms-1" data-bs-toggle="tooltip" title="Country of origination">
+                    <i class="ki-outline ki-information fs-7"></i>
+                  </span>
+                </label>
+                <!--end::Label-->
+
+                <!--begin::Col-->
+                <div class="col-lg-8">
+                  <span class="fw-bold fs-6 text-gray-800">{{
+                    condidat.domaine
+                    }}</span>
+                </div>
+                <!--end::Col-->
+              </div>
+              <!--end::Input group-->
+
+              <!--begin::Input group-->
+              <div class="row mb-7">
+                <!--begin::Label-->
+                <label class="col-lg-4 fw-semibold text-muted">diplôme</label>
+                <!--end::Label-->
+
+                <!--begin::Col-->
+                <div class="col-lg-8">
+                  <span class="fw-bold fs-6 text-gray-800">{{
+                    condidat.diplomes
+                    }}</span>
+                </div>
+                <!--end::Col-->
+              </div>
+              <!--end::Input group-->
+
+              <!--begin::Input group-->
+
+              <!--end::Input group-->
+
+              <!--begin::Input group-->
+              <div class="row mb-10">
+                <!--begin::Label-->
+                <label class="col-lg-4 fw-semibold text-muted">Expériences professionnelles</label>
+                <!--begin::Label-->
+
+                <!--begin::Label-->
+                <div class="col-lg-8">
+                  <span class="fw-semibold fs-6 text-gray-800">
+                    {{ condidat.experienceProf }}
+                  </span>
+                </div>
+                <!--begin::Label-->
+              </div>
+              <!--end::Input group-->
+
+              <!--begin::Input group-->
+              <div class="row mb-10">
+                <!--begin::Label-->
+                <label class="col-lg-4 fw-semibold text-muted">Compétences techniques</label>
+                <!--begin::Label-->
+
+                <!--begin::Label-->
+                <div class="col-lg-8">
+                  <span class="fw-semibold fs-6 text-gray-800">{{
+                    condidat.competences
+                    }}</span>
+                </div>
+                <!--begin::Label-->
+              </div>
+              <!--end::Input group-->
+
+              <!--begin::Input group-->
+
+              <!--end::Input group-->
+              <!--begin::Input group-->
+            </div>
+            <!--end::Input group-->
+          </div>
+          <!--end::Card body-->
+        </div>
+        <!--end::details View-->
+
+        <!--begin::Slider-->
+        <div class="tns tns-default mb-10">
+          <!--begin::Wrapper-->
+          <div data-tns="true" data-tns-loop="true" data-tns-swipe-angle="false" data-tns-speed="2000"
+            data-tns-autoplay="true" data-tns-autoplay-timeout="18000" data-tns-controls="true" data-tns-nav="false"
+            data-tns-itecms="1" data-tns-center="false" data-tns-dots="false"
+            data-tns-prev-button="#kt_team_slider_prev" data-tns-next-button="#kt_team_slider_next"
+            data-tns-responsive="{1200: {items: 3}, 992: {items: 2}}">
+            <!--begin::Item-->
+            <div class="text-center" style="margin-left: 20px; margin-right: 20px">
+              <!--end::Item-->
+            </div>
+            <!--end::Wrapper-->
+
+            <!--begin::Button-->
+            <button class="btn btn-icon btn-active-color-primary" id="kt_team_slider_prev">
+              <i class="ki-duotone ki-left fs-3x"></i>
+            </button>
+            <!--end::Button-->
+
+            <!--begin::Button-->
+            <button class="btn btn-icon btn-active-color-primary" id="kt_team_slider_next">
+              <i class="ki-duotone ki-right fs-3x"></i>
+            </button>
+            <!--end::Button-->
+          </div>
+          <!--end::Slider-->
+
+          <!--end::Content container-->
+        </div>
+        <!--end::Content-->
+      </div>
+      <!--end::Content wrapper-->
+    </div>
+    <!--end:::Main-->
+  </div>
+  <!--end::Wrapper-->
+</div>
+
+<!--begin::Scrolltop-->
+<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+  <i class="ki-outline ki-arrow-up"></i>
+</div>
+<!--end::Scrolltop-->
+
+<!--begin::Modals-->
+
+<!--end::Modals-->
+
+<!--begin::Javascript-->
+<!--begin::Modal - View Users-->
+<div class="modal" id="kt_modal_create_campaign" tabindex="-1" aria-hidden="true">
+  <!--begin::Modal dialog-->
+  <div class="modal-dialog mw-650px">
+    <!--begin::Modal content-->
+    <div class="modal-content">
+      <!--begin::Modal header-->
+      <div class="modal-header pb-0 border-0 justify-content-end">
+        <!--begin::Close-->
+        <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+          <i class="ki-outline ki-cross fs-1"></i>
+        </div>
+        <!--end::Close-->
+      </div>
+      <!--begin::Modal header-->
+
+      <!--begin::Modal body-->
+      <div class="modal-body scroll-y mx-5 mx-xl-18 pt-0 pb-15" style="overflow-y: auto; max-height: 500px">
+        <!--begin::Heading-->
+        <div class="text-center mb-13">
+          <!--begin::Title-->
+          <h1 class="mb-3">ENTRETIENS</h1>
+          <!--end::Title-->
+        </div>
+        <!--end::Heading-->
+
+        <!--begin::Users-->
+        <div *ngFor="let entretien of entretiens" class="mb-15">
+          <!--begin::List-->
+          <div class="mh-375px">
+            <!--begin::User-->
+            <div class="d-flex flex-stack py-3 border-bottom border-gray-300 border-bottom-dashed">
+              <!--begin::Details-->
+              <div class="d-flex align-items-center">
+                <!--begin::Details-->
+                <!--begin::Modal body-->
+                <div class="modal-body pt-0 pb-10 px-lg-10">
+                  <!--begin::Row-->
+                  <div class="d-flex">
+                    <div class="mb-4">
+                      <!--begin::Event name-->
+                      <div class="d-flex align-items-center mb-1">
+                        <span class="fs-3 fw-bold me-2 text-success">{{
+                          entretien.domaine
+                          }}</span>
+                      </div>
+                      <!--end::Event name-->
+                    </div>
+                  </div>
+                  <!--end::Row-->
+
+                  <!--begin::Row-->
+                  <div class="d-flex align-items-center mb-1">
+                    <!--begin::Bullet-->
+                    <span class="bullet bullet-dot h-8px w-8px bg-success ms-1 me-4"></span>
+                    <!--end::Bullet-->
+
+                    <!--begin::Event start date/time-->
+                    <div class="fs-6">
+                      <span class="fw-bold">date</span> &nbsp;
+                      <span data-kt-calendar="event_start_date">{{
+                        entretien.date
+                        }}</span>
+                    </div>
+                    <!--end::Event start date/time-->
+                  </div>
+                  <!--end::Row-->
+
+                  <!--begin::Row-->
+                  <div class="d-flex align-items-center mb-4">
+                    <!--begin::Bullet-->
+                    <span class="bullet bullet-dot h-8px w-8px bg-danger ms-1 me-4"></span>
+                    <!--end::Bullet-->
+
+                    <!--begin::Event end date/time-->
+                    <div class="fs-6">
+                      <span class="fw-bold">horaire</span> &nbsp;
+                      <span data-kt-calendar="event_end_date">{{
+                        entretien.horaire
+                        }}</span>
+                    </div>
+                    <!--end::Event end date/time-->
+                  </div>
+                  <!--end::Row-->
+
+                  <!--begin::Row-->
+                  <div class="d-flex align-items-center">
+                    <!--begin::Icon-->
+                    <i class="ki-duotone ki-geolocation fs-1 text-muted me-3"><span class="path1"></span><span
+                        class="path2"></span></i>
+                    <!--end::Icon-->
+
+                    <!--begin::Event location-->
+                    <div class="fs-6 fw-bold" data-kt-calendar="event_location">
+                      Centre National de l'Informatique (CNI)
+                    </div>
+                    <!--end::Event location-->
+                  </div>
+                  <!--end::Row-->
+                </div>
+                <!--end::Modal body-->
+                <!--end::Details-->
+              </div>
+              <!--end::Details-->
+            </div>
+            <!--end::User-->
+          </div>
+          <!--end::List-->
+        </div>
+        <!--end::Users-->
+      </div>
+      <!--end::Modal body-->
+    </div>
+    <!--end::Modal content-->
+  </div>
+  <!--end::Modal dialog-->
+</div>
+<!--end::Modal - View Users-->

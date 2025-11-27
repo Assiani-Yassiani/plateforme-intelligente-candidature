@@ -1,0 +1,524 @@
+<app-navbar></app-navbar>
+<!--begin::Wrapper-->
+<div class="app-wrapper d-flex" id="kt_app_wrapper">
+  <!--begin::Wrapper container-->
+  <div class="app-container container-fluid">
+    <!--begin::Main-->
+    <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+      <!--begin::Content wrapper-->
+      <div class="d-flex flex-column flex-column-fluid">
+        <!--begin::Toolbar-->
+        <div id="kt_app_toolbar" class="app-toolbar">
+          <!--begin::Toolbar container-->
+          <div class="d-flex flex-stack flex-row-fluid">
+            <!--begin::Toolbar wrapper-->
+            <div class="d-flex flex-column flex-row-fluid">
+              <!--begin::Page title-->
+              <div class="page-title d-flex align-items-center me-3">
+                <!--begin::Title-->
+
+                <!--end::Title-->
+              </div>
+              <!--end::Page title-->
+            </div>
+            <!--end::Toolbar wrapper-->
+          </div>
+          <!--end::Toolbar container-->
+        </div>
+        <!--end::Toolbar-->
+
+        <!--begin::Content-->
+        <div id="kt_app_content" class="app-content">
+          <!--begin::Card-->
+          <div class="card pt-4 mb-6 mb-xl-9">
+            <!--begin::Card header-->
+            <div class="card-header border-0">
+              <!--begin::Card title-->
+              <div class="card-title">
+                <h2 class="fw-bold mb-0">Candidatures</h2>
+              </div>
+              <!--end::Card title-->
+              <div class="card-toolbar">
+                <!-- <ul class="nav">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link btn btn-sm btn-color-muted btn-active btn-active-secondary fw-bold px-4 me-1 active"
+                      (click)="onClick('')"
+                      data-bs-toggle="tab"
+                      >Tous</a
+                    >
+                  </li>
+
+                  <li class="nav-item">
+                    <a
+                      class="nav-link btn btn-sm btn-color-muted btn-active btn-active-secondary fw-bold px-4 me-1"
+                      (click)="onClick('en cours')"
+                      data-bs-toggle="tab"
+                      >en cours</a
+                    >
+                  </li>
+
+                  <li class="nav-item">
+                    <a
+                      class="nav-link btn btn-sm btn-color-muted btn-active btn-active-secondary fw-bold px-4"
+                      (click)="onClick('acceptée')"
+                      data-bs-toggle="tab"
+                      >acceptées</a
+                    >
+                  </li>
+
+                  <li class="nav-item">
+                    <a
+                      class="nav-link btn btn-sm btn-color-muted btn-active btn-active-secondary fw-bold px-4"
+                      (click)="onClick('refusée')"
+                      data-bs-toggle="tab"
+                      >refusées</a
+                    >
+                  </li>
+                </ul> -->
+                <!-- Adding the new buttons with icons -->
+                <div class="btn-group ms-4">
+                  <!-- Increased margin to ms-4 for more space -->
+                  <button type="button" class="btn btn-sm btn-secondary" (click)="onClick2('IA')">
+                    <i class="bi bi-lightbulb-fill"></i> Tri intelligent
+                  </button>
+                  <button type="button" class="btn btn-sm btn-secondary" (click)="onClick2('IA')">
+                    <i class="bi bi-sort-alpha-down"></i> Trie
+                  </button>
+                </div>
+              </div>
+              <!--begin::Card toolbar-->
+            </div>
+            <!--end::Card header-->
+
+            <!--begin::Card body-->
+
+            <div id="kt_customer_view_payment_method" class="card-body pt-0" *ngIf="candidatureData.length > 0">
+              <div *ngFor="let candidature of candidatureData">
+                <!--begin::Option-->
+                <div class="py-0" data-kt-customer-payment-method="row">
+                  <!--begin::Header-->
+                  <div class="py-3 d-flex flex-stack flex-wrap">
+                    <!--begin::Toggle-->
+                    <div class="d-flex align-items-center collapsible rotate" data-bs-toggle="collapse"
+                      href="#kt_customer_view_payment_method_1" role="button" aria-expanded="false"
+                      aria-controls="kt_customer_view_payment_method_1">
+                      <!--begin::Arrow-->
+                      <div class="me-3 rotate-90">
+                        <i class="ki-duotone ki-right fs-3"></i>
+                      </div>
+                      <!--end::Arrow-->
+
+                      <!--begin::Summary-->
+                      <div class="me-3">
+                        <div class="d-flex align-items-center">
+                          <div class="text-gray-800 fw-bold">
+                            {{ candidature.emploi }}
+                          </div>
+
+                          <div class="badge badge-light-primary ms-5">
+                            {{ candidature.status }}
+                          </div>
+                        </div>
+                        <div class="text-muted">
+                          Nom & Prénom Candidat: {{ candidature.nom }}
+                          {{ candidature.prenom }}
+                        </div>
+
+                        <div class="text-muted"></div>
+                      </div>
+                      <!--end::Summary-->
+                    </div>
+                    <!--end::Toggle-->
+
+                    <!--begin::Toolbar-->
+                    <div class="d-flex my-3 ms-9">
+                      <!--begin::Edit-->
+                      <a class="btn btn-icon btn-active-light-primary w-30px h-30px me-3" data-bs-toggle="modal"
+                        data-bs-target="#kt_modal_new_card" (click)="
+                          toggleModal(candidature.id, candidature.idcondidature)
+                        ">
+                        <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="modifier status candidature">
+                          <i class="ki-duotone ki-pencil fs-3"><span class="path1"></span><span
+                              class="path2"></span></i>
+                        </span>
+                      </a>
+                      <!--end::Edit-->
+                      <!--begin::Edit-->
+                      <a class="btn btn-icon btn-active-light-primary w-30px h-30px me-3" data-bs-toggle="modal"
+                        data-bs-target="#kt_modal_new_card" (click)="
+                          toggleDeailEntretien(
+                            candidature.id,
+                            candidature.idcondidature
+                          )
+                        ">
+                        <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="modifier date entretien">
+                          <i class="ki-duotone ki-calendar fs-1"><span class="path1"></span><span
+                              class="path2"></span></i>
+                        </span>
+                      </a>
+                      <!--end::Edit-->
+                    </div>
+                    <!--end::Toolbar-->
+                  </div>
+                  <!--end::Header-->
+
+                  <!--begin::Body-->
+                  <div id="kt_customer_view_payment_method_1" class="collapse show fs-6 ps-10"
+                    data-bs-parent="#kt_customer_view_payment_method">
+                    <!--begin::Details-->
+                    <div class="d-flex flex-wrap py-5">
+                      <!--begin::Col-->
+                      <div class="flex-equal me-5">
+                        <table class="table table-flush fw-semibold gy-1">
+                          <tr>
+                            <td class="text-muted min-w-125px w-125px">Tel:</td>
+                            <td class="text-gray-800">{{ candidature.tel }}</td>
+                          </tr>
+                          <tr>
+                            <td class="text-muted min-w-125px w-125px">
+                              diplomes
+                            </td>
+                            <td class="text-gray-800">
+                              {{ candidature.diplomes }}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="text-muted min-w-125px w-125px">
+                              compétences
+                            </td>
+                            <td class="text-gray-800">
+                              {{ candidature.competences }}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="text-muted min-w-125px w-125px">
+                              experience Professionnelle:
+                            </td>
+                            <td class="text-gray-800">
+                              {{ candidature.experienceProf }}
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td class="text-muted min-w-125px w-225px">
+                              Score:
+                            </td>
+                            <td class="text-gray-800">
+                              {{ candidature.score }}
+                            </td>
+                          </tr>
+                          <tr></tr>
+                        </table>
+                        <button style="margin-left: 92.3%" class="btn btn-flex btn-sm btn-primary" type="button"
+                          (click)="pdf(candidature.cv)">
+                          Voir Cv
+                        </button>
+                      </div>
+                      <!--end::Col-->
+                    </div>
+                    <!--end::Details-->
+                  </div>
+                  <!--end::Body-->
+                </div>
+                <!--end::Option-->
+
+                <div class="separator separator-dashed"></div>
+              </div>
+            </div>
+            <!--end::Card body-->
+            <div *ngIf="candidatureData.length == 0">
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <div class="text-center">
+                <p class="display-10 font-weight-bold" style="font-size: 1.2rem">
+                  Aucune candidature trouvée
+                </p>
+              </div>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+            </div>
+          </div>
+          <!--end::Card-->
+        </div>
+        <!--end::Content-->
+      </div>
+      <!--end::Content wrapper-->
+    </div>
+    <!--end:::Main-->
+  </div>
+  <!--end::Wrapper container-->
+</div>
+<!--end::Wrapper-->
+
+<!--begin::Scrolltop-->
+<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+  <i class="ki-duotone ki-arrow-up"><span class="path1"></span><span class="path2"></span></i>
+</div>
+<!--end::Scrolltop-->
+<div class="swal2-container swal2-center swal2-backdrop-show" style="overflow-y: auto" *ngIf="showModal">
+  <div aria-labelledby="swal2-title" aria-describedby="swal2-html-container"
+    class="swal2-popup swal2-modal swal2-icon-warning swal2-show" tabindex="-1" role="dialog" aria-live="assertive"
+    aria-modal="true" style="display: grid">
+    <div class="swal2-html-container" id="swal2-html-container" style="display: block">
+      <!--begin::Card header-->
+
+      <!--begin::Card title-->
+      <div class="card-title">
+        <h2>Status Candidature</h2>
+      </div>
+      <br />
+      <br />
+      <!--end::Card title-->
+
+      <!--end::Card header-->
+      <form [formGroup]="candidatureForm">
+        <!--begin::Card body-->
+        <div class="card-body pt-0">
+          <!--begin::Select2-->
+          <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="status"
+            tabindex="-1" formControlName="status" (change)="changeStatus($event)">
+            <option value="en cours">en cours</option>
+            <option value="acceptée">acceptée</option>
+            <option value="refusée">refusée</option>
+          </select>
+          <!--end::Select2-->
+
+          <!--begin::Description-->
+          <div class="text-muted fs-7">Set the status.</div>
+          <button class="btn btn-flex btn-sm btn-primary" type="button" (click)="toggleForm()"
+            *ngIf="selectedStatus === 'acceptée'">
+            <i class="ki-duotone ki-plus fs-2"></i>
+            fixer un entretien
+          </button>
+          <!--end::Description-->
+        </div>
+        <!--end::Card body-->
+        <div class="swal2-actions" style="display: flex">
+          <div class="swal2-loader"></div>
+          <button type="submit" class="swal2-confirm btn btn-sm fw-bold btn-danger" aria-label=""
+            style="display: inline-block" (click)="Status()">
+            envoyer
+          </button>
+          <button type="button" class="swal2-cancel btn btn-sm fw-bold btn-active-light-primary" aria-label=""
+            style="display: inline-block" (click)="closeModal()">
+            annuler
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--begin::Modals-->
+<!--begin::Modals-->
+<!--begin::Modals-->
+<!--begin::Modals-->
+<div class="modal fade show" id="kt_modal_view_event" tabindex="-1" data-bs-focus="false" aria-modal="true"
+  role="dialog" style="display: block" *ngIf="showDetailEntretien">
+  <!--begin::Modal dialog-->
+  <div class="modal-dialog modal-dialog-centered mw-650px">
+    <!--begin::Modal content-->
+    <div class="modal-content">
+      <!--begin::Modal header-->
+      <div class="modal-header border-0 justify-content-end">
+        <!--begin::Edit-->
+        <div class="btn btn-icon btn-sm btn-color-gray-500 btn-active-icon-primary me-2" *ngIf="entretienData.date"
+          (click)="toggleForm()">
+          <i class="ki-duotone ki-pencil fs-2"><span class="path1"></span><span class="path2"></span></i>
+        </div>
+        <!--end::Edit-->
+
+        <!--begin::Close-->
+        <div class="btn btn-icon btn-sm btn-color-gray-500 btn-active-icon-primary" data-bs-toggle="tooltip"
+          data-bs-dismiss="click" aria-label="Hide Event" data-bs-original-title="Hide Event" data-kt-initialized="1"
+          (click)="closeDetailEntretien()">
+          <i class="ki-duotone ki-cross fs-2x"><span class="path1"></span><span class="path2"></span></i>
+        </div>
+        <!--end::Close-->
+      </div>
+      <!--end::Modal header-->
+      <div class="mb-9" *ngIf="!entretienData.date">
+        <!--begin::Event name-->
+        <p class="modal-body pt-0 pb-20 px-lg-17 fs-3 fw-bold me-3">
+          aucun entretien Programmé
+        </p>
+        <!--end::Event name-->
+      </div>
+      <!--begin::Modal body-->
+      <div class="modal-body pt-0 pb-20 px-lg-17" *ngIf="entretienData.date">
+        <!--begin::Row-->
+        <div class="d-flex">
+          <!--begin::Icon-->
+          <i class="ki-duotone ki-calendar-8 fs-1 text-muted me-5"><span class="path1"></span><span
+              class="path2"></span><span class="path3"></span><span class="path4"></span><span
+              class="path5"></span><span class="path6"></span></i>
+          <!--end::Icon-->
+
+          <div class="mb-9">
+            <!--begin::Event name-->
+            <div class="d-flex align-items-center mb-2">
+              <span class="fs-3 fw-bold me-3" data-kt-calendar="event_name">
+                Entretien Programmé</span>
+            </div>
+            <!--end::Event name-->
+          </div>
+        </div>
+        <!--end::Row-->
+
+        <!--begin::Row-->
+        <div class="d-flex align-items-center mb-2">
+          <!--begin::Bullet-->
+          <span class="bullet bullet-dot h-10px w-10px bg-success ms-2 me-7"></span>
+          <!--end::Bullet-->
+
+          <!--begin::Event start date/time-->
+          <div class="fs-6">
+            <span class="fw-bold">Date</span>
+            <span data-kt-calendar="event_start_date">
+              {{ entretienData.date }}</span>
+          </div>
+          <!--end::Event start date/time-->
+        </div>
+        <!--end::Row-->
+
+        <!--begin::Row-->
+        <div class="d-flex align-items-center mb-9">
+          <!--begin::Bullet-->
+          <span class="bullet bullet-dot h-10px w-10px bg-danger ms-2 me-7"></span>
+          <!--end::Bullet-->
+
+          <!--begin::Event end date/time-->
+          <div class="fs-6">
+            <span class="fw-bold">horaire</span>
+            <span data-kt-calendar="event_end_date">{{
+              entretienData.horaire
+              }}</span>
+          </div>
+          <!--end::Event end date/time-->
+        </div>
+        <!--end::Row-->
+
+        <!--begin::Row-->
+        <div class="d-flex align-items-center">
+          <!--begin::Icon-->
+          <i class="ki-duotone ki-geolocation fs-1 text-muted me-5"><span class="path1"></span><span
+              class="path2"></span></i>
+          <!--end::Icon-->
+
+          <!--begin::Event location-->
+          <div class="fs-6" data-kt-calendar="event_location">
+            Centre National de l'Informatique (CNI)
+          </div>
+          <!--end::Event location-->
+        </div>
+        <!--end::Row-->
+      </div>
+      <!--end::Modal body-->
+    </div>
+  </div>
+</div>
+<!--end::Body-->
+<!--end::Body-->
+<!--end::Body-->
+<div class="modal fade show" id="kt_modal_add_event" tabindex="-1" data-bs-focus="false" style="display: block"
+  aria-modal="true" role="dialog" *ngIf="showForm">
+  <!--begin::Modal dialog-->
+  <div class="modal-dialog modal-dialog-centered mw-650px">
+    <!--begin::Modal content-->
+    <div class="modal-content">
+      <!--begin::Form-->
+      <form class="form fv-plugins-bootstrap5 fv-plugins-framework" [formGroup]="form">
+        <!--begin::Modal header-->
+        <div class="modal-header">
+          <!--begin::Modal title-->
+          <h2 class="fw-bold" data-kt-calendar="title">Fixer un Entretien</h2>
+          <!--end::Modal title-->
+
+          <!--begin::Close-->
+          <div class="btn btn-icon btn-sm btn-active-icon-primary" (click)="closeForm()">
+            <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>
+          </div>
+          <!--end::Close-->
+        </div>
+        <!--end::Modal header-->
+
+        <!--begin::Modal body-->
+        <div class="modal-body py-10 px-lg-17">
+          <!--begin::Input group-->
+          <div class="row row-cols-lg-2 g-10">
+            <div class="col">
+              <div class="fv-row mb-9 fv-plugins-icon-container fv-plugins-bootstrap5-row-valid">
+                <!--begin::Label-->
+                <label class="fs-6 fw-semibold mb-2 required">Date</label>
+                <!--end::Label-->
+                <div class="field col-12 md:col-4">
+                  <p-calendar inputId="basic" [(ngModel)]="date1" formControlName="date"></p-calendar>
+                </div>
+                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+              </div>
+            </div>
+          </div>
+          <!--end::Input group-->
+
+          <!--begin::Input group-->
+          <div class="row row-cols-lg-2 g-10">
+            <div class="col">
+              <div class="fv-row mb-9 fv-plugins-icon-container fv-plugins-bootstrap5-row-valid">
+                <!--begin::Label-->
+                <label class="fs-6 fw-semibold mb-2 required">Horaire</label>
+                <!--end::Label-->
+                <div class="field col-12 md:col-4">
+                  <p-calendar [(ngModel)]="date7" [timeOnly]="true" inputId="timeonly"
+                    formControlName="Horaire"></p-calendar>
+                </div>
+                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+              </div>
+            </div>
+          </div>
+          <!--end::Input group-->
+
+          <!--begin::Input group-->
+          <div class="fv-row mb-9">
+            <!--begin::Label-->
+            <label class="fs-6 fw-semibold mb-2">Lien meet</label>
+            <!--end::Label-->
+
+            <!--begin::Input-->
+            <input formControlName="meet" type="text" class="form-control" placeholder="meet" />
+            <!--end::Input-->
+          </div>
+          <!--end::Input group-->
+        </div>
+        <!--end::Modal body-->
+
+        <!--begin::Modal footer-->
+        <div class="modal-footer flex-center">
+          <!--begin::Button-->
+          <button type="reset" class="btn btn-light me-3" (click)="closeForm()">
+            Cancel
+          </button>
+          <!--end::Button-->
+
+          <!--begin::Button-->
+          <button type="button" class="btn btn-primary" (click)="Entretien()">
+            Submit
+          </button>
+          <!--end::Button-->
+        </div>
+        <!--end::Modal footer-->
+      </form>
+      <!--end::Form-->
+    </div>
+  </div>
+</div>

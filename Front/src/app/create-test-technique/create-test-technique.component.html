@@ -1,0 +1,56 @@
+<div class="app-wrapper d-flex" id="kt_app_wrapper">
+  <div class="app-container container-fluid">
+    <div class="p-card p-shadow-6">
+      <div class="p-card-header mt-2">
+        <h2>Créer un Test Technique</h2>
+      </div>
+      <div class="p-card-body">
+        <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+          <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col-12">
+              <label for="testName" class="form-label">Nom du Test</label>
+              <input id="testName" class="form-control" type="text" pInputText formControlName="testName" />
+            </div>
+
+            <div formArrayName="questions" class="p-col-12">
+              <div *ngFor="let question of questions()?.controls; let i = index" [formGroupName]="i"
+                class="p-field p-col-12">
+                <label for="question-{{ i }}" class="form-label">Question {{ i + 1 }}</label>
+                <input id="question-{{ i }}" class="form-control" type="text" pInputText
+                  formControlName="description" />
+
+                <div formArrayName="options" class="p-col-12">
+                  <div *ngFor="let option of options(i)?.controls; let j = index" [formGroupName]="j"
+                    class="p-field p-col-12 p-mb-3">
+                    <div class="p-inputgroup">
+                      <span class="p-inputgroup-addon">Option {{ j + 1 }}</span>
+                      <input id="option-{{ i }}-{{ j }}" class="form-control" type="text" pInputText
+                        formControlName="text" />
+                      <label class="custom-checkbox">
+                        <input type="checkbox" formControlName="correct" class="custom-checkbox-input" />
+                        Correct
+                      </label>
+
+                      <!--<p-checkbox
+                          [binary]="true"
+                          formControlName="correct"
+                          [label]="'Correct'"
+                        ></p-checkbox>-->
+                    </div>
+                  </div>
+                </div>
+
+                <button pButton type="button" icon="pi pi-plus" (click)="addOption(i)" label="Ajouter Option"
+                  class="p-mt-2"></button>
+              </div>
+            </div>
+
+            <button pButton type="button" icon="pi pi-plus" (click)="addQuestion()" label="Ajouter Question"
+              class="p-mt-2"></button>
+            <button pButton type="submit" label="Créer Test" class="p-mt-2 p-button-success"></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

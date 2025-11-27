@@ -1,0 +1,162 @@
+<div id="kt_body" class="app-blank" style="position: relative; z-index: 1000;">
+  <!-- Conteneur pour l'image de fond avec flou -->
+  <div style="
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      z-index: -1;
+      background-image: url('/assets/img/Banniere.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      filter: blur(10px); /* Apply blur to the background image */
+    "></div>
+
+  <div class="d-flex align-items-center justify-content-center vh-100">
+    <div class="d-flex flex-column flex-lg-row flex-column-fluid w-100">
+      <!--begin::Body-->
+      <div class="d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1">
+        <!--begin::Form-->
+        <div class="d-flex flex-center flex-column flex-lg-row-fluid">
+          <!--begin::Wrapper-->
+          <div class="w-lg-500px p-10 bg-white rounded shadow-sm register-form">
+            <!--begin::Form-->
+            <form class="form w-100" novalidate="novalidate" [formGroup]="form" (ngSubmit)="onSubmit()">
+              <!--begin::Heading-->
+              <div class="text-center mb-11">
+                <h1 class="text-gray-900 fw-bolder mb-3">S'inscrire</h1>
+              </div>
+              <!--end::Heading-->
+
+              <!--begin::Separator-->
+              <div class="separator separator-content my-14">
+                <span class="w-125px text-gray-500 fw-semibold fs-7">Inscription</span>
+              </div>
+              <!--end::Separator-->
+
+              <!--begin::Input group--->
+              <div class="form-group mb-8">
+                <input type="email" placeholder="Email" name="email" autocomplete="off"
+                  class="form-control bg-transparent" formControlName="email"
+                  [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+                <div *ngIf="submitted && f['email'].errors" class="invalid-feedback fs-7 fw-bold">
+                  {{
+                  customValidators.getErrorMessage("Email", f["email"].errors)
+                  }}
+                </div>
+              </div>
+              <!--end::Input group--->
+
+              <!--begin::Input group-->
+              <div class="form-group mb-8" data-kt-password-meter="true">
+                <div class="mb-1">
+                  <div class="position-relative mb-3">
+                    <input class="form-control bg-transparent" type="password" placeholder="Mot de passe"
+                      name="password" autocomplete="off" formControlName="password" [ngClass]="{
+                        'is-invalid': submitted && f['password'].errors
+                      }" />
+                    <div *ngIf="submitted && f['password'].errors" class="invalid-feedback fs-7 fw-bold">
+                      {{
+                      customValidators.getErrorMessage(
+                      "Password",
+                      f["password"].errors
+                      )
+                      }}
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center mb-3" data-kt-password-meter-control="highlight">
+                    <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                    <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                    <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                    <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px"></div>
+                  </div>
+                </div>
+                <div class="text-muted">
+                  Utilisez 8 caractères ou plus avec un mélange de lettres,
+                  chiffres et symboles.
+                </div>
+              </div>
+              <!--end::Input group--->
+
+              <!--begin::Input group--->
+              <div class="form-group mb-8">
+                <input type="password" placeholder="Répéter mot de passe" name="confirm-password" autocomplete="off"
+                  class="form-control bg-transparent" formControlName="confirmPassword" [ngClass]="{
+                    'is-invalid': submitted && f['confirmPassword'].errors
+                  }" />
+                <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback fs-7 fw-bold">
+                  {{
+                  customValidators.getErrorMessage(
+                  "Confirm Password",
+                  f["confirmPassword"].errors
+                  )
+                  }}
+                </div>
+              </div>
+              <!--end::Input group--->
+
+              <!--begin::Submit button-->
+              <div class="d-grid mb-10 form-group">
+                <button type="submit" id="kt_sign_up_submit" class="btn btn-primary">
+                  <span class="indicator-label">S’inscrire</span>
+                  <span class="indicator-progress">Veuillez patienter...<span
+                      class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                </button>
+              </div>
+              <!--end::Submit button-->
+
+              <!--begin::Sign up-->
+              <div class="text-gray-500 text-center fw-semibold fs-6">
+                Vous avez déjà un compte ?
+                <a [routerLink]="['/login']" class="link-primary fw-semibold">Se connecter</a>
+              </div>
+              <!--end::Sign up-->
+            </form>
+            <!--end::Form-->
+          </div>
+          <!--end::Wrapper-->
+        </div>
+        <!--end::Form-->
+
+        <!--begin::Footer-->
+        <div class="w-lg-500px d-flex flex-stack px-10 mx-auto"></div>
+        <!--end::Footer-->
+      </div>
+      <!--end::Body-->
+    </div>
+    <!--end::Authentication - Sign-up-->
+
+    <!--begin::Javascript-->
+    <div class="swal2-container swal2-center swal2-backdrop-show" style="overflow-y: auto"
+      *ngIf="isSignUpFailed || isLoginFailed">
+      <div aria-labelledby="swal2-title" aria-describedby="swal2-html-container"
+        class="swal2-popup swal2-modal swal2-icon-error swal2-show" tabindex="-1" role="dialog" aria-live="assertive"
+        aria-modal="true" style="display: grid">
+        <div class="swal2-icon swal2-error swal2-icon-show" style="display: flex">
+          <span class="swal2-x-mark">
+            <span class="swal2-x-mark-line-left"></span>
+            <span class="swal2-x-mark-line-right"></span>
+          </span>
+        </div>
+        <div class="swal2-html-container" id="swal2-html-container" style="display: block">
+          <strong>{{ status }} <br />{{ error }}</strong><br />
+        </div>
+        <div class="swal2-actions" style="display: flex">
+          <div class="swal2-loader"></div>
+          <button type="button" class="swal2-confirm btn btn-primary" aria-label="" style="display: inline-block"
+            (click)="closeModal()">
+            Ok
+          </button>
+        </div>
+      </div>
+    </div>
+    <!--end::Javascript-->
+  </div>
+
+  <!--end::Global Javascript Bundle-->
+  <script src="./assets/js/inscriotion"></script>
+  <!--end::Javascript-->
+</div>

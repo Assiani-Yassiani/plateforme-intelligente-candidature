@@ -1,0 +1,654 @@
+<!--begin::Wrapper-->
+
+<div class="app-wrapper d-flex" id="kt_app_wrapper">
+  <!--begin::Wrapper container-->
+  <div class="app-container container-fluid">
+    <!--begin::Main-->
+    <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+      <!--begin::Content wrapper-->
+      <div class="d-flex flex-column flex-column-fluid">
+        <!--begin::Toolbar-->
+        <div id="kt_app_toolbar" class="app-toolbar">
+          <!--begin::Toolbar container-->
+          <div class="d-flex flex-stack flex-row-fluid">
+            <!--begin::Toolbar wrapper-->
+            <div class="d-flex flex-column flex-row-fluid">
+              <!--begin::Breadcrumb-->
+              <ul class="breadcrumb breadcrumb-separatorless fw-semibold mb-3">
+                <!--begin::Item-->
+                <li class="breadcrumb-item text-gray-600 fw-bold lh-1">
+                  <a [routerLink]="['/home']" class="text-white text-hover-primary">
+                    <i class="ki-duotone ki-home text-gray-500 fs-2"></i>
+                  </a>
+                </li>
+
+                <!--end::Item-->
+
+                <!--begin::Item-->
+                <li class="breadcrumb-item">
+                  <i class="ki-duotone ki-right fs-3 text-gray-500 mx-n1"></i>
+                </li>
+                <!--end::Item-->
+
+                <!--begin::Item-->
+                <li class="breadcrumb-item text-gray-600 fw-bold lh-1">
+                  offres d'emploi
+                </li>
+                <!--end::Item-->
+              </ul>
+              <!--end::Breadcrumb-->
+
+              <!--begin::Page title-->
+              <div class="page-title d-flex align-items-center me-3">
+                <!--begin::Title-->
+                <h1 class="page-heading d-flex text-gray-900 fw-bolder fs-1 flex-column justify-content-center my-0">
+                  Détails de l'annonce
+                </h1>
+                <!--end::Title-->
+              </div>
+              <!--end::Page title-->
+            </div>
+            <!--end::Toolbar wrapper-->
+          </div>
+          <!--end::Toolbar container-->
+        </div>
+        <!--end::Toolbar-->
+
+        <!--begin::Content-->
+        <div id="kt_app_content" class="app-content">
+          <!--begin::Invoice 2 main-->
+          <div class="card">
+            <!--begin::Body-->
+            <div class="card-body p-lg-20">
+              <!--begin::Layout-->
+              <div class="d-flex flex-column flex-xl-row">
+                <!--begin::Content-->
+                <div class="flex-lg-row-fluid me-xl-18 mb-10 mb-xl-0">
+                  <!--begin::Invoice 2 content-->
+                  <div class="mt-n1">
+                    <!--begin::Top-->
+                    <div class="d-flex flex-stack pb-10">
+                      <!--begin::Action-->
+
+                      <a (click)="postuler(offreData.id)" class="btn btn-sm btn-success">postuler</a>
+                      <td *ngIf="!showCandidatButton">
+                        <div style="position: absolute; top: 20px; right: 20px">
+                          <a [routerLink]="['/offre-form']" [queryParams]="{ offreId: offreData.id }"
+                            class="btn btn-icon btn-bg-light btn-active-color-success btn-sm me-1">
+                            <i class="ki-duotone ki-pencil text-success fs-2">
+                              <span class="path1"></span>
+                              <span class="path2"></span>
+                            </i>
+                          </a>
+                        </div>
+                      </td>
+
+                      <!--end::Action-->
+                    </div>
+                    <!--end::Top-->
+
+                    <!--begin::Wrapper-->
+                    <div class="m-0">
+                      <!--begin::Label-->
+                      <div class="fw-bold fs-3 text-info mb-8">
+                        {{ offreData.domaine }}
+                      </div>
+                      <!--end::Label-->
+
+                      <!--begin::Row-->
+                      <div class="row g-5 mb-11">
+                        <!--end::Col-->
+                        <div class="col-sm-6">
+                          <!--end::Label-->
+                          <div class="fw-bold fs-7 text-gray-600 mb-1">
+                            <i class="ki-duotone ki-office-bag">
+                              <span class="path1"></span>
+                              <span class="path2"></span>
+                              <span class="path3"></span>
+                              <span class="path4"></span> </i>Expérience requise :
+                          </div>
+                          <!--end::Label-->
+
+                          <!--end::Col-->
+                          <div class="fw fs-6 text-gray-800">
+                            {{ offreData.experienceProf }}
+                          </div>
+                          <!--end::Col-->
+                        </div>
+                        <!--end::Col-->
+                        <div class="col-sm-6">
+                          <!--end::Label-->
+                          <div class="fw-bold fs-7 text-gray-600 mb-1">
+                            <i class="ki-duotone ki-office-bag">
+                              <span class="path1"></span>
+                              <span class="path2"></span>
+                              <span class="path3"></span>
+                              <span class="path4"></span> </i>Expérience requise :
+                          </div>
+                          <!--end::Label-->
+
+                          <!--end::Col-->
+                          <div class="fw fs-6 text-gray-800">
+                            {{ offreData.experienceProf }}
+                          </div>
+                          <!--end::Col-->
+                        </div>
+                        <!--end::Col-->
+
+                        <!--end::Col-->
+                      </div>
+                      <!--end::Row-->
+
+                      <!--begin::Row-->
+                      <div class="row g-5 mb-12">
+                        <!--end::Col-->
+                        <div class="col-sm-6">
+                          <!--end::Label-->
+
+                          <!--end::Label-->
+
+                          <!--end::Text-->
+
+                          <!--end::Text-->
+                        </div>
+                        <!--end::Col-->
+
+                        <!--end::Col-->
+                        <div class="col-sm-6">
+                          <!--end::Label-->
+                          <div class="fw-bold fs-7 text-gray-600 mb-1">
+                            <i class="ki-duotone ki-teacher">
+                              <span class="path1"></span>
+                              <span class="path2"></span> </i>diplôme:
+                          </div>
+                          <!--end::Label-->
+
+                          <!--end::Text-->
+                          <div class="fw fs-6 text-gray-800">
+                            {{ offreData.diplome }}
+                          </div>
+                          <!--end::Text-->
+                        </div>
+                        <!--end::Col-->
+                      </div>
+                      <!--end::Row-->
+                    </div>
+                    <!--end::Wrapper-->
+                  </div>
+                  <!--end::Invoice 2 content-->
+                </div>
+                <!--end::Content-->
+
+                <!--begin::Sidebar-->
+                <div class="m-0">
+                  <!--begin::Invoice 2 sidebar-->
+                  <div
+                    class="d-print-none border border-dashed border-gray-300 card-rounded h-lg-100 min-w-md-350px p-9 bg-light-info">
+                    <!--begin::Labels-->
+                    <div class="mb-8">
+                      <span class="badge badge-light-success me-2"><i class="ki-duotone ki-calendar-2 text-success">
+                          <span class="path1"></span>
+                          <span class="path2"></span>
+                          <span class="path3"></span>
+                          <span class="path4"></span>
+                          <span class="path5"></span> </i>&nbsp; date de publication :{{
+                        offreData.datePublication
+                        }}</span>
+                      <br />
+                      <br />
+                      <span class="badge badge-light-success"><i class="ki-duotone ki-calendar-remove text-success">
+                          <span class="path1"></span>
+                          <span class="path2"></span>
+                          <span class="path3"></span>
+                          <span class="path4"></span>
+                          <span class="path5"></span>
+                          <span class="path6"></span> </i>&nbsp; date d'expiration:
+                        {{ offreData.dateExpiration }}</span>
+                    </div>
+                    <!--end::Labels-->
+
+                    <!--begin::Item-->
+                    <div class="mb-6">
+                      <div class="fw-bold text-gray-900 fs-7">
+                        <i class="ki-duotone ki-information">
+                          <span class="path1"></span>
+                          <span class="path2"></span>
+                          <span class="path3"></span>
+                        </i>
+                        Postes vacants: {{ offreData.postesVacants }}
+                      </div>
+                    </div>
+                    <!--end::Item-->
+
+                    <!--begin::Item-->
+                    <div class="mb-6">
+                      <div class="fw-bold text-gray-900 fs-7">
+                        <i class="ki-duotone ki-notepad-bookmark">
+                          <span class="path1"></span>
+                          <span class="path2"></span>
+                          <span class="path3"></span>
+                          <span class="path4"></span>
+                          <span class="path5"></span>
+                          <span class="path6"></span>
+                        </i>
+                        Type de contrat proposé : {{ offreData.typeContrat }}
+                      </div>
+                    </div>
+                    <!--end::Item-->
+                  </div>
+                  <!--end::Invoice 2 sidebar-->
+                </div>
+                <!--end::Sidebar-->
+              </div>
+              <!--end::Layout-->
+              <br *ngIf="!showCandidatButton" />
+
+              <a [routerLink]="['/candidatures', offreData.id]" class="btn btn-secondary btn-active-success btn-sm"
+                *ngIf="!showCandidatButton">Candidatures à cette offre</a>
+              <br /><br />
+              <a class="btn btn-secondary btn-active-success btn-sm" *ngIf="!showCandidatButton"
+                (click)="toggleListEntretien()">Entretiens programmés pour cette offre</a>
+              <br *ngIf="!showCandidatButton" />
+              <br *ngIf="!showCandidatButton" />
+              <br *ngIf="!showCandidatButton" />
+              <!--begin::Job-->
+              <div class="mb-10 mb-lg-0">
+                <!--begin::Accordion-->
+
+                <div class="m-0">
+                  <!--begin::Heading-->
+                  <div class="d-flex align-items-center collapsible py-3 toggle collapsed mb-0"
+                    data-bs-toggle="collapse" data-bs-target="#kt_job_3_10">
+                    <!--begin::Icon-->
+                    <div class="btn btn-sm btn-icon mw-20px btn-active-color-primary me-5">
+                      <i class="ki-duotone ki-minus-square toggle-on text-primary fs-1"><span class="path1"></span><span
+                          class="path2"></span></i>
+                      <i class="ki-duotone ki-plus-square toggle-off fs-1"><span class="path1"></span><span
+                          class="path2"></span><span class="path3"></span></i>
+                    </div>
+                    <!--end::Icon-->
+
+                    <!--begin::Title-->
+                    <h4 class="text-gray-700 fw-bold cursor-pointer mb-0">
+                      compétance
+                    </h4>
+                    <!--end::Title-->
+                  </div>
+                  <!--end::Heading-->
+
+                  <!--begin::Body-->
+                  <div id="kt_job_3_10" class="collapse fs-6 ms-1">
+                    <!--begin::Item-->
+                    <div class="mb-4">
+                      <!--begin::Item-->
+                      <div class="d-flex align-items-center ps-10 mb-n1">
+                        <!--begin::Bullet-->
+                        <span class="bullet me-3"></span>
+                        <!--end::Bullet-->
+
+                        <!--begin::Label-->
+                        <div class="text-gray-600 fw-semibold fs-6">
+                          {{ offreData.competences }}
+                        </div>
+                        <!--end::Label-->
+                      </div>
+                      <!--end::Item-->
+                    </div>
+                    <!--end::Item-->
+                  </div>
+                  <!--end::Content-->
+
+                  <!--begin::Separator-->
+                  <div class="separator separator-dashed"></div>
+                  <!--end::Separator-->
+                </div>
+                <!--end::Section-->
+
+                <!--begin::Section-->
+                <div class="m-0">
+                  <!--begin::Heading-->
+                  <div class="d-flex align-items-center collapsible py-3 toggle collapsed mb-0"
+                    data-bs-toggle="collapse" data-bs-target="#kt_job_3_2">
+                    <!--begin::Icon-->
+                    <div class="btn btn-sm btn-icon mw-20px btn-active-color-primary me-5">
+                      <i class="ki-duotone ki-minus-square toggle-on text-primary fs-1"><span class="path1"></span><span
+                          class="path2"></span></i>
+                      <i class="ki-duotone ki-plus-square toggle-off fs-1"><span class="path1"></span><span
+                          class="path2"></span><span class="path3"></span></i>
+                    </div>
+                    <!--end::Icon-->
+
+                    <!--begin::Title-->
+                    <h4 class="text-gray-700 fw-bold cursor-pointer mb-0">
+                      poste demandé
+                    </h4>
+                    <!--end::Title-->
+                  </div>
+                  <!--end::Heading-->
+
+                  <!--begin::Body-->
+                  <div id="kt_job_3_2" class="collapse fs-6 ms-1">
+                    <!--begin::Item-->
+                    <div class="mb-4">
+                      <!--begin::Item-->
+                      <div class="d-flex align-items-center ps-10 mb-n1">
+                        <!--begin::Bullet-->
+                        <span class="bullet me-3"></span>
+                        <!--end::Bullet-->
+
+                        <!--begin::Label-->
+                        <div class="text-gray-600 fw-semibold fs-6">
+                          {{ offreData.desc1 }}
+                        </div>
+                        <!--end::Label-->
+                      </div>
+                      <!--end::Item-->
+                    </div>
+                    <!--end::Item-->
+                  </div>
+                  <!--end::Content-->
+
+                  <!--begin::Separator-->
+                  <div class="separator separator-dashed"></div>
+                  <!--end::Separator-->
+                </div>
+                <!--end::Section-->
+
+                <!--begin::Section-->
+                <div class="m-0">
+                  <!--begin::Heading-->
+                  <div class="d-flex align-items-center collapsible py-3 toggle collapsed mb-0"
+                    data-bs-toggle="collapse" data-bs-target="#kt_job_3_3">
+                    <!--begin::Icon-->
+                    <div class="btn btn-sm btn-icon mw-20px btn-active-color-primary me-5">
+                      <i class="ki-duotone ki-minus-square toggle-on text-primary fs-1"><span class="path1"></span><span
+                          class="path2"></span></i>
+                      <i class="ki-duotone ki-plus-square toggle-off fs-1"><span class="path1"></span><span
+                          class="path2"></span><span class="path3"></span></i>
+                    </div>
+                    <!--end::Icon-->
+
+                    <!--begin::Title-->
+                    <h4 class="text-gray-700 fw-bold cursor-pointer mb-0">
+                      Profil recherché
+                    </h4>
+                    <!--end::Title-->
+                  </div>
+                  <!--end::Heading-->
+
+                  <!--begin::Body-->
+                  <div id="kt_job_3_3" class="collapse fs-6 ms-1">
+                    <!--begin::Item-->
+                    <div class="mb-4">
+                      <!--begin::Item-->
+                      <div class="d-flex align-items-center ps-10 mb-n1">
+                        <!--begin::Bullet-->
+                        <span class="bullet me-3"></span>
+                        <!--end::Bullet-->
+
+                        <!--begin::Label-->
+                        <div class="text-gray-600 fw-semibold fs-6">
+                          {{ offreData.desc2 }}
+                        </div>
+                        <!--end::Label-->
+                      </div>
+                      <!--end::Item-->
+                    </div>
+                    <!--end::Item-->
+                  </div>
+                  <!--end::Content-->
+
+                  <!--begin::Separator-->
+                  <div class="separator separator-dashed"></div>
+                  <!--end::Separator-->
+                </div>
+                <!--end::Section-->
+
+                <!--begin::Section-->
+                <div class="m-0">
+                  <!--begin::Heading-->
+                  <div class="d-flex align-items-center collapsible py-3 toggle collapsed mb-0"
+                    data-bs-toggle="collapse" data-bs-target="#kt_job_3_4">
+                    <!--begin::Icon-->
+                    <div class="btn btn-sm btn-icon mw-20px btn-active-color-primary me-5">
+                      <i class="ki-duotone ki-minus-square toggle-on text-primary fs-1"><span class="path1"></span><span
+                          class="path2"></span></i>
+                      <i class="ki-duotone ki-plus-square toggle-off fs-1"><span class="path1"></span><span
+                          class="path2"></span><span class="path3"></span></i>
+                    </div>
+                    <!--end::Icon-->
+
+                    <!--begin::Title-->
+                    <h4 class="text-gray-700 fw-bold cursor-pointer mb-0">
+                      Avantage
+                    </h4>
+                    <!--end::Title-->
+                  </div>
+                  <!--end::Heading-->
+
+                  <!--begin::Body-->
+                  <div id="kt_job_3_4" class="collapse fs-6 ms-1">
+                    <!--begin::Item-->
+                    <div class="mb-4">
+                      <!--begin::Item-->
+                      <div class="d-flex align-items-center ps-10 mb-n1">
+                        <!--begin::Bullet-->
+                        <span class="bullet me-3"></span>
+                        <!--end::Bullet-->
+
+                        <!--begin::Label-->
+                        <div class="text-gray-600 fw-semibold fs-6">
+                          {{ offreData.desc3 }}
+                        </div>
+                        <!--end::Label-->
+                      </div>
+                      <!--end::Item-->
+                    </div>
+                    <!--end::Item-->
+                  </div>
+                  <!--end::Content-->
+                </div>
+                <!--end::Section-->
+
+                <!--end::Accordion-->
+              </div>
+              <!--end::Job-->
+            </div>
+            <!--end::Body-->
+          </div>
+          <!--end::Invoice 2 main-->
+        </div>
+        <!--end::Content-->
+      </div>
+      <!--end::Content wrapper-->
+    </div>
+    <!--end:::Main-->
+  </div>
+  <!--end::Wrapper container-->
+</div>
+<!--end::Wrapper-->
+
+<!--begin::Scrolltop-->
+<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+  <i class="ki-duotone ki-arrow-up"><span class="path1"></span><span class="path2"></span></i>
+</div>
+<!--end::Scrolltop-->
+<div class="swal2-container swal2-center swal2-backdrop-show" style="overflow-y: auto" *ngIf="error">
+  <div aria-labelledby="swal2-title" aria-describedby="swal2-html-container"
+    class="swal2-popup swal2-modal swal2-icon-error swal2-show" tabindex="-1" role="dialog" aria-live="assertive"
+    aria-modal="true" style="display: grid">
+    <div class="swal2-icon swal2-error swal2-icon-show" style="display: flex">
+      <span class="swal2-x-mark">
+        <span class="swal2-x-mark-line-left"></span>
+        <span class="swal2-x-mark-line-right"></span>
+      </span>
+    </div>
+    <div class="swal2-html-container" id="swal2-html-container" style="display: block">
+      <strong>
+        {{ status }} <br />
+        {{ error }}</strong><br />{{ errorMessage }}
+    </div>
+
+    <div class="swal2-actions" style="display: flex">
+      <div class="swal2-loader"></div>
+      <button type="button" class="swal2-confirm btn btn-primary" aria-label="" style="display: inline-block"
+        (click)="closeModal()">
+        Ok
+      </button>
+    </div>
+  </div>
+</div>
+<!--begin::Modal - View Users-->
+<!--begin::Modal - View Users-->
+<!--begin::Modal - View Users-->
+<!--begin::Modal - View Users-->
+<!--begin::Modal - View Users-->
+<!--begin::Javascript-->
+<!--begin::Modal - View Users-->
+<div tabindex="-1" *ngIf="showListEntretien" class="modal fade show" tabindex="-1" data-bs-focus="false"
+  aria-modal="true" role="dialog" style="display: block">
+  <!--begin::Modal dialog-->
+  <div class="modal-dialog mw-650px">
+    <!--begin::Modal content-->
+    <div class="modal-content">
+      <!--begin::Modal header-->
+      <div class="modal-header pb-0 border-0 justify-content-end">
+        <!--begin::Close-->
+        <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal"
+          (click)="closeListEntretien()">
+          <i class="ki-outline ki-cross fs-1"></i>
+        </div>
+        <!--end::Close-->
+      </div>
+      <!--begin::Modal header-->
+
+      <!--begin::Modal body-->
+      <div class="modal-body scroll-y mx-5 mx-xl-18 pt-0 pb-15" style="overflow-y: auto; max-height: 500px">
+        <!--begin::Heading-->
+        <div class="text-center mb-13">
+          <!--begin::Title-->
+          <h1 class="mb-3">ENTRETIENS</h1>
+          <!--end::Title-->
+        </div>
+        <!--end::Heading-->
+
+        <!--begin::Users-->
+        <div class="mb-15" *ngIf="entretienData.length > 0">
+          <!--begin::List-->
+          <div class="mh-375px" *ngFor="let entretien of entretienData">
+            <!--begin::User-->
+            <div class="d-flex flex-stack py-3 border-bottom border-gray-300 border-bottom-dashed">
+              <!--begin::Details-->
+              <div class="d-flex align-items-center">
+                <!--begin::Details-->
+                <!--begin::Modal body-->
+                <div class="modal-body pt-0 pb-10 px-lg-10">
+                  <!--begin::Row-->
+                  <div class="d-flex">
+                    <div class="mb-4">
+                      <!--begin::Event name-->
+                      <div class="d-flex align-items-center mb-1">
+                        <span class="fs-3 fw-bold me-2 text-success">
+                          {{ entretien.domaineOffre }}</span>
+                      </div>
+                      <!--end::Event name-->
+                    </div>
+                  </div>
+                  <!--end::Row-->
+
+                  <!--begin::Row-->
+                  <div class="d-flex align-items-center mb-1">
+                    <!--begin::Event start date/time-->
+                    <div class="fs-6">
+                      <span class="fw-bold">nom & prénom candidat :</span>
+                      &nbsp;
+                      <span data-kt-calendar="event_start_date">
+                        {{ entretien.nom }} {{ entretien.prenom }}
+                      </span>
+                    </div>
+                    <!--end::Event start date/time-->
+                  </div>
+                  <!--end::Row-->
+                  <!--begin::Row-->
+                  <div class="d-flex align-items-center mb-1">
+                    <!--begin::Event start date/time-->
+                    <div class="fs-6">
+                      <span class="fw-bold">tel:</span> &nbsp;
+                      <span data-kt-calendar="event_start_date">
+                        {{ entretien.tel }}</span>
+                    </div>
+                    <!--end::Event start date/time-->
+                  </div>
+                  <!--end::Row-->
+                  <!--begin::Row-->
+                  <div class="d-flex align-items-center mb-1">
+                    <!--begin::Bullet-->
+                    <span class="bullet bullet-dot h-8px w-8px bg-success ms-1 me-4"></span>
+                    <!--end::Bullet-->
+
+                    <!--begin::Event start date/time-->
+                    <div class="fs-6">
+                      <span class="fw-bold">date</span> &nbsp;
+                      <span data-kt-calendar="event_start_date">
+                        {{ entretien.date }}</span>
+                    </div>
+                    <!--end::Event start date/time-->
+                  </div>
+                  <!--end::Row-->
+
+                  <!--begin::Row-->
+                  <div class="d-flex align-items-center mb-4">
+                    <!--begin::Bullet-->
+                    <span class="bullet bullet-dot h-8px w-8px bg-danger ms-1 me-4"></span>
+                    <!--end::Bullet-->
+
+                    <!--begin::Event end date/time-->
+                    <div class="fs-6">
+                      <span class="fw-bold">horaire</span> &nbsp;
+                      <span data-kt-calendar="event_end_date">
+                        {{ entretien.horaire }}</span>
+                    </div>
+                    <!--end::Event end date/time-->
+                  </div>
+                  <!--end::Row-->
+
+                  <!--begin::Row-->
+                  <div class="d-flex align-items-center">
+                    <!--begin::Icon-->
+                    <i class="ki-duotone ki-geolocation fs-1 text-muted me-3"><span class="path1"></span><span
+                        class="path2"></span></i>
+                    <!--end::Icon-->
+
+                    <!--begin::Event location-->
+                    <div class="fs-6 fw-bold" data-kt-calendar="event_location">
+                      Centre National de l'Informatique (CNI)
+                    </div>
+                    <!--end::Event location-->
+                  </div>
+                  <!--end::Row-->
+                </div>
+                <!--end::Modal body-->
+                <!--end::Details-->
+              </div>
+              <!--end::Details-->
+            </div>
+            <!--end::User-->
+          </div>
+          <!--end::List-->
+        </div>
+        <div *ngIf="entretienData.length === 0" class="text-center">
+          <p class="display-5 font-weight-bold" style="font-size: 1.2rem">
+            Aucun entretien programmé pour cette offre
+          </p>
+        </div>
+        <!--end::Users-->
+      </div>
+      <!--end::Modal body-->
+    </div>
+    <!--end::Modal content-->
+  </div>
+  <!--end::Modal dialog-->
+</div>
+<!--end::Modal - View Users-->
+<!--end::Javascript-->
+<!--end::Modal - View Users-->

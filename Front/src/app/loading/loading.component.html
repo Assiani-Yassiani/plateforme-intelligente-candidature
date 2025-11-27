@@ -1,0 +1,71 @@
+<!--begin::Theme mode setup on page load-->
+<script>
+  var defaultThemeMode = "light";
+  var themeMode;
+
+  if (document.documentElement) {
+    if (document.documentElement.hasAttribute("data-bs-theme-mode")) {
+      themeMode = document.documentElement.getAttribute("data-bs-theme-mode");
+    } else {
+      if (localStorage.getItem("data-bs-theme") !== null) {
+        themeMode = localStorage.getItem("data-bs-theme");
+      } else {
+        themeMode = defaultThemeMode;
+      }
+    }
+
+    if (themeMode === "system") {
+      themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    }
+
+    document.documentElement.setAttribute("data-bs-theme", themeMode);
+  }
+</script>
+<!--end::Theme mode setup on page load-->
+
+<!--begin::Root-->
+
+<!--begin::Page bg image-->
+
+<!--end::Page bg image-->
+
+<!--begin::Authentication - Signup Welcome Message -->
+<div class="d-flex flex-column flex-center flex-column-fluid">
+  <!--begin::Content-->
+  <div class="d-flex flex-column flex-center text-center p-10">
+    <!--begin::Wrapper-->
+    <div class="card card-flush w-lg-650px py-5">
+      <div class="card-body py-15 py-lg-20">
+        <!--begin::Title-->
+        <h1 class="fw-bolder fs-2qx text-gray-900 mb-4">Loading...</h1>
+        <!--end::Title-->
+
+        <!--begin::Text-->
+        <div class="fw-semibold fs-6 text-gray-500 mb-7">
+          Something went wrong! Please try again later.
+        </div>
+        <!--end::Text-->
+
+        <!--begin::Illustration-->
+        <div class="mb-11">
+          <img src="" class="mw-100 mh-300px theme-light-show" alt="" />
+          <img
+            src="/metronic8/demo46/assets/media/auth/500-error-dark.png"
+            class="mw-100 mh-300px theme-dark-show"
+            alt=""
+          />
+        </div>
+        <!--end::Illustration-->
+      </div>
+    </div>
+    <!--end::Wrapper-->
+  </div>
+  <!--end::Content-->
+</div>
+<!--end::Authentication - Signup Welcome Message-->
+
+<!--end::Root-->
+
+<!--end::Body-->

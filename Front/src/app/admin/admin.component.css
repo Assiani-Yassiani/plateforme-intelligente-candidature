@@ -1,0 +1,13 @@
+ .card {
+     width: 120%
+ }
+
+ .table {
+     width: 100%
+ }
+
+ td,
+ th,
+ tr {
+     text-align: center;
+ }
