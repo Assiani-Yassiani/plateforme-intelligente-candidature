@@ -52,26 +52,11 @@ Ce module aide le recruteur à identifier rapidement les profils les plus compat
 
 ## 🛠️ Technologies utilisées
 
-- **Backend :**
-  - Flask (Python)
-  - Gestion des routes, logique métier et API
-  - Connexion à une base de données (SQLite / PostgreSQL / MySQL)
+- **Backend :** Spring Boot, Flask (Python), PostgreSQL  
+- **Frontend :** Angular 16+  
+- **NLP / IA :** NLP (Python)  
+- **DevOps & outils :** Docker, Git, GitLab
 
-- **NLP / IA :**
-  - Python (bibliothèques NLP)
-  - Vectorisation des textes (TF-IDF, embeddings…)
-  - Calcul de similarité (cosine similarity, etc.)
-
-- **Frontend :**
-  - HTML / CSS / Bootstrap (ou équivalent)
-  - Formulaires pour les candidats et recruteurs
-  - Pages de liste d’offres et de candidatures
-
-- **Autres :**
-  - Git / GitHub pour le versionnement
-  - JSON pour les échanges de données entre frontend et backend
-
----
 
 ## 📌 Statut du projet
 
